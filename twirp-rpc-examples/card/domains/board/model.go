@@ -124,6 +124,7 @@ type Input struct {
 	Title   string        `json:"title" validate:"required"`
 	Members []MemberInput `json:"members"`
 	Lists   []ListInput   `json:"lists"`
+	Labels  []LabelInput  `json:"labels"`
 }
 
 func (t Input) ToEntity() (res *Board, err error) {
