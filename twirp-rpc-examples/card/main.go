@@ -22,6 +22,7 @@ func main() {
 	boardTwirpHandler := pb.NewBoardServiceServer(boardTwirpServer)
 	mux := http.NewServeMux()
 	mux.Handle(boardTwirpHandler.PathPrefix(), boardTwirpHandler)
+	mux.Handle("/swaggerui/", http.StripPrefix("/swaggerui/", http.FileServer(http.Dir("./swaggerui"))))
 
 	log.Printf("listening to port :9001\n")
 	http.ListenAndServe(":9001", mux)

@@ -20,16 +20,16 @@ const (
 	insertBoardQuery = `
 		INSERT INTO board (
 			entity_id,
-			public_id,
+			code,
 			title,
 			created_at,
 			updated_at,
 			deleted_at
-		) VALUES (?, ?, ?, ?, ?, ?, ?)
+		) VALUES (?, ?, ?, ?, ?, ?)
 	`
 	updateBoardQuery = `
 		UPDATE board SET
-			public_id = ?,
+			code = ?,
 			title = ?,
 			created_at = ?,
 			updated_at = ?,
@@ -39,7 +39,7 @@ const (
 	selectBoardQuery = `
 		SELECT 
 			b.entity_id,
-			b.public_id,
+			b.code,
 			b.title,
 			b.created_at,
 			b.updated_at,
@@ -294,7 +294,7 @@ func (repo *SQLRepository) existByID(id string) (bool, error) {
 func (repo *SQLRepository) insert(tx *sqlx.Tx, entity *Board) error {
 	res, err := tx.Exec(insertBoardQuery,
 		entity.ID,
-		entity.PublicID,
+		entity.Code,
 		entity.Title,
 		entity.CreatedAt,
 		entity.UpdatedAt,
@@ -315,7 +315,7 @@ func (repo *SQLRepository) insert(tx *sqlx.Tx, entity *Board) error {
 
 func (repo *SQLRepository) update(tx *sqlx.Tx, entity *Board) error {
 	res, err := tx.Exec(updateBoardQuery,
-		entity.PublicID,
+		entity.Code,
 		entity.Title,
 		entity.CreatedAt,
 		entity.UpdatedAt,

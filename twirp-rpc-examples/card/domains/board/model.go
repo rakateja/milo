@@ -23,7 +23,7 @@ func (t Filter) IsEmpty() bool {
 
 type Board struct {
 	ID        string        `json:"entity_id" db:"entity_id"`
-	PublicID  string        `json:"public_id" db:"public_id"`
+	Code      string        `json:"code" db:"code"`
 	Title     string        `json:"title" db:"title"`
 	Members   []BoardMember `json:"members"`
 	Lists     []BoardList   `json:"lists"`
@@ -150,7 +150,7 @@ func (t Input) ToEntity() (res *Board, err error) {
 	}
 	return &Board{
 		ID:        id.String(),
-		PublicID:  "FOOBAR",
+		Code:      "FOOBAR",
 		Title:     t.Title,
 		Members:   members,
 		Lists:     lists,

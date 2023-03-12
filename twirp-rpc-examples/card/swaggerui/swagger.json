@@ -1,0 +1,150 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "service.proto",
+    "version": "version not set"
+  },
+  "host": "localhost:9001",
+  "paths": {
+    "/twirp/twirp.example.card.BoardService/CreateBoard": {
+      "post": {
+        "tags": [
+          "BoardService"
+        ],
+        "operationId": "CreateBoard",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/twirp.example.card_BoardCreateInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/twirp.example.card_Board"
+            }
+          }
+        }
+      }
+    },
+    "/twirp/twirp.example.card.BoardService/GetByID": {
+      "post": {
+        "tags": [
+          "BoardService"
+        ],
+        "operationId": "GetByID",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/twirp.example.card_GetByIDInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/twirp.example.card_Board"
+            }
+          }
+        }
+      }
+    },
+    "/twirp/twirp.example.card.BoardService/UpdateBoard": {
+      "post": {
+        "tags": [
+          "BoardService"
+        ],
+        "operationId": "UpdateBoard",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/twirp.example.card_BoardUpdateInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/twirp.example.card_Board"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "twirp.example.card_Board": {
+      "description": "Fields: id, title, created_at, updated_at",
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "twirp.example.card_BoardCreateInput": {
+      "description": "Fields: title",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "twirp.example.card_BoardUpdateInput": {
+      "description": "Fields: id, title",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "twirp.example.card_GetByIDInput": {
+      "description": "Fields: id",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
