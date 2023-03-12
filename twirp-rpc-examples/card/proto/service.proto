@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package twirp.example.card;
+option go_package = "proto/rpcproto";
+
+import "google/protobuf/timestamp.proto";
+
+service BoardService {
+    rpc CreateBoard(BoardCreateInput) returns (Board);
+    rpc UpdateBoard(BoardUpdateInput) returns (Board);
+    rpc GetByID(GetByIDInput) returns (Board);
+}
+
+message BoardCreateInput {
+    string title = 1;
+}
+
+message BoardUpdateInput {
+    string id = 1;
+    string title = 2;
+}
+
+message GetByIDInput {
+    string id = 1;
+}
+
+message Board {
+    string id = 1;
+    string title = 2;
+    google.protobuf.Timestamp created_at = 3;
+    google.protobuf.Timestamp updated_at = 4;
+}
